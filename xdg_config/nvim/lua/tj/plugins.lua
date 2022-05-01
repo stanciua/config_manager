@@ -19,6 +19,10 @@ local is_linx = not is_wsl and not is_mac
 
 -- require('packer.luarocks').cfg({ luarocks =
 
+require("packer").init {
+  max_jobs = 50,
+}
+
 return require("packer").startup {
   function(use)
     local local_use = function(first, second, opts)
@@ -111,6 +115,38 @@ return require("packer").startup {
 
     -- use "simrat39/rust-tools.nvim"
     -- use "ray-x/go.nvim"
+
+    use {
+      "ray-x/guihua.lua",
+      config = function()
+        require("guihua.maps").setup {
+          maps = {
+            close_view = "<C-e>",
+            save = "<C-s>",
+            jump_to_list = "<C-w>k",
+            jump_to_preview = "<C-w>j",
+            prev = "<C-p>",
+            next = "<C-n>",
+            pageup = "<C-b>",
+            pagedown = "<C-f>",
+            confirm = "<C-o>",
+            split = "<C-s>",
+            vsplit = "<C-v>",
+          },
+        }
+      end,
+    }
+
+    use {
+      "ray-x/go.nvim",
+      config = function()
+        require("go").setup {
+          verbose = false,
+          run_in_floaterm = true,
+        }
+      end,
+    }
+
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
 
     use {
@@ -456,7 +492,7 @@ return require("packer").startup {
     -- }
 
     -- Grammars
-    local_use "tree-sitter-lua"
+    -- local_use "tree-sitter-lua"
     -- use { "m-novikov/tree-sitter-sql" }
     -- use { "DerekStride/tree-sitter-sql" }
     -- local_use "tree-sitter-sql"

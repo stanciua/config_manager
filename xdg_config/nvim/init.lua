@@ -72,6 +72,9 @@ vim.g.mapleader = ","
 -- These don't have any special meaning.
 vim.g.snippets = "luasnip"
 
+-- Enable plugins
+require "tj.plugins"
+
 -- Turn off builtin plugins I do not use.
 require "tj.disable_builtin"
 
