@@ -115,6 +115,12 @@ return require("packer").startup {
 
     -- use "simrat39/rust-tools.nvim"
     -- use "ray-x/go.nvim"
+    use {
+      "max397574/better-escape.nvim",
+      config = function()
+        require("better_escape").setup()
+      end,
+    }
 
     use {
       "ray-x/guihua.lua",

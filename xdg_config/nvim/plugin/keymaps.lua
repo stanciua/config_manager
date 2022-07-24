@@ -100,3 +100,7 @@ vim.keymap.set("n", "<Left>", function()
   vim.cmd [[checktime]]
   vim.api.nvim_feedkeys("gT", "n", true)
 end)
+-- close Go Term close
+
+require("go")
+nmap { "<leader>tg", require("go.term").close }
